@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Posiciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h2 class="text-center mb-4">Tabla de Posiciones</h2>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Equipo</th>
+                <th>Pts</th>
+                <th>PJ</th>
+                <th>G</th>
+                <th>E</th>
+                <th>P</th>
+                <th>DG</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-posiciones"></tbody>
+    </table>
+
+    <script>
+        const equipos = [
+            { nombre: "Cuauhnahuac", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Chapultepec", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Zapata", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Jiutepec", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Porvenir", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Civac", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "San Andrés", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 },
+            { nombre: "Tepoztlan", pts: 0, pj: 0, g: 0, e: 0, p: 0, dg: 0 }
+        ];
+
+        function actualizarTabla() {
+            equipos.sort((a, b) => b.pts - a.pts || b.dg - a.dg); // Ordena por Puntos y luego por Diferencia de Goles
+            const tabla = document.getElementById("tabla-posiciones");
+            tabla.innerHTML = ""; // Limpiar tabla antes de renderizar
+
+            equipos.forEach((equipo, index) => {
+                const fila = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${equipo.nombre}</td>
+                        <td>${equipo.pts}</td>
+                        <td>${equipo.pj}</td>
+                        <td>${equipo.g}</td>
+                        <td>${equipo.e}</td>
+                        <td>${equipo.p}</td>
+                        <td>${equipo.dg}</td>
+                    </tr>`;
+                tabla.innerHTML += fila;
+            });
+        }
+
+        actualizarTabla(); // Llamada inicial para mostrar la tabla
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
