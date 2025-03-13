@@ -7,7 +7,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-4">
-    <h2 class="text-center mb-4">Tabla de Posiciones</h2>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Liga estaca Civac</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Tabla de Posiciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calendario.html">Resultados</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h2 class="text-center my-4">Tabla de Posiciones</h2>
+
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
@@ -37,9 +59,9 @@
         ];
 
         function actualizarTabla() {
-            equipos.sort((a, b) => b.pts - a.pts || b.dg - a.dg); // Ordena por Puntos y luego por Diferencia de Goles
+            equipos.sort((a, b) => b.pts - a.pts || b.dg - a.dg);
             const tabla = document.getElementById("tabla-posiciones");
-            tabla.innerHTML = ""; // Limpiar tabla antes de renderizar
+            tabla.innerHTML = "";
 
             equipos.forEach((equipo, index) => {
                 const fila = `
@@ -57,10 +79,14 @@
             });
         }
 
-        actualizarTabla(); // Llamada inicial para mostrar la tabla
+        actualizarTabla();
 
+        // Resalta el enlace activo en el Navbar
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <scrip
