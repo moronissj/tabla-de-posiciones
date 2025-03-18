@@ -54,7 +54,7 @@
     
         async function cargarResultados() {
             try {
-                const response = await fetch("../resultados.json");
+                const response = await fetch("resultados.json");
                 calendario = await response.json();
                 mostrarPagina(1);
             } catch (error) {
